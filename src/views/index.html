@@ -21,7 +21,7 @@
         <div class="content">
             <header>
                 <img src="/icones/logo.svg" alt="Ecoleta">
-                <a href="/create-point.html">
+                <a href="/create-point">
                     <span></span> Cadastre um ponto de coleta</a>
             </header>
             <main>
@@ -37,24 +37,7 @@
         </div>
     </div>
 
-    <div id="modal" class="hide">
-        <div class="content">
-            <div class="header">
-                <h1>Pontos de Coleta</h1>
-                <a href="#">Fechar</a>
-            </div>
-            <form action="/search-results.html">
-                <label for="search">Cidade</label>
-                <div class="search field">
-                    <input type="text" name="search" placeholder="Digite a Cidade">
-                    <button>
-                        <img src="/icones/search.svg" alt="Buscar">
-                    </button>
-
-                </div>
-            </form>
-        </div>
-    </div>
+    {% include "partials/modal.html" %}
 
     <script src="/scripts/index.js"></script>
 </body>
