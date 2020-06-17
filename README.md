@@ -18,5 +18,5 @@ Pontos interessantes:
 * Usa Express para hospedar Backend e iniciar rotas
 * Usa Nodemon para disponibilizar alterações online
 
-Imagens:
-
+Exemplo:
+![](readme.gif)
