@@ -1,52 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt_br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+{% set pageId = "page-search-results" %}
+{% block title %}
     <title>Resultado da Pesquisa</title>
+{% endblock title %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/styles/main.css">
+{% block styles %}
     <link rel="stylesheet" href="/styles/search-results.css">
-    <link rel="stylesheet" href="/styles/responsive.css">
+{% endblock styles %}
 
-</head>
+{% block content %}
+    {% include "partials/page-header.html" %}
 
-<body>
+    <main>
+        {% if total > 0 %}
+            {% if total > 1 %}
+                <h4>
+                    <strong>{{total}}
+                        pontos</strong>
+                    encontrados
 
-    <div id="page-search-results">
+                </h4>
+                {%else%}
+                <h4>
+                    <strong>{{total}}
+                        ponto</strong>
+                    encontrado
 
-        {% include "partials/page-header.html" %}
+                </h4>
+            {% endif %}
 
-        <main>
-            <h4>
-                <strong>2 pontos</strong> encontrados
-            </h4>
             <div class="cards">
-                <div class="card">
-                    <img src="/images/colectoria.jpeg" alt="Colectoria">
-                    <h1>Colectoria</h1>
-                    <h3>Resíduos Eletrônicos/Lâmpadas</h3>
-                    <p>
-                        Rio do Sul, Santa Catarina <br/> Guilherme Gemballa, Jardim América <br/> Nº 260
-                    </p>
-                </div>
-                <div class="card">
-                    <img src="/images/papeis_papelao.jpeg" alt="Papersider">
-                    <h1>Papersider</h1>
-                    <h3>Papéis e Papelão</h3>
-                    <p>
-                        Rio do Sul, Santa Catarina <br/> Guilherme Gemballa, Jardim América <br/> Nº 260
-                    </p>
-                </div>
+
+                {% for place in places %}
+                    <div class="card">
+                        <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <h1>{{ place.name }}</h1>
+                        <h3>{{ place.items }}</h3>
+                        <p>
+                            {{ place.city }},
+                            {{ place.state }}
+                            <br/>
+                            {{ place.address }}
+                            <br/>
+                            {{ place.address2 }}
+                        </p>
+                    </div>
+                {% endfor %}
+
             </div>
-        </main>
 
-    </div>
+            {%else%}
+            <h4> <strong>Nenhum</strong> local encontrado!!</h4>
 
+        {% endif %}
 
-</body>
+    </main>
 
-</html>
+{% endblock content %}

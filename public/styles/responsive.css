@@ -69,6 +69,9 @@
     #page-create-point a {
         font-size: 0.01px;
     }
+    #page-create-point form legend {
+        display: inline;
+    }
 }
 
 @media(min-width: 1350px) {
